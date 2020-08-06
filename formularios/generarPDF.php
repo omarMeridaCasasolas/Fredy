@@ -14,13 +14,5 @@
     $pdf->loadHtml(utf8_decode(ob_get_clean()),'UTF-8');
     $pdf->render();
     $output = $pdf->output();
-    $_SESSION['NombreArchivo'] =  $rutaGuardado.$nombreArchivo;
-    file_put_contents($rutaGuardado.$nombreArchivo, $output);
-        if(file_exists($rutaGuardado.$nombreArchivo)){
-            echo $rutaGuardado.$nombreArchivo;
-            header("Location:existe.php");
-        }else{
-            echo "No existe la ruta";
-        }
     //$pdf->stream('Ejemplo.pdf');
 ?>  
