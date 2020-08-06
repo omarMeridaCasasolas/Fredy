@@ -15,5 +15,6 @@
     $pdf->render();
     $output = $pdf->output();
     file_put_contents($rutaGuardado.$nombreArchivo, $output);
+    $_SESSION['NombreArchivo'] =  $rutaGuardado.$nombreArchivo;
     //$pdf->stream('Ejemplo.pdf');
 ?>  
