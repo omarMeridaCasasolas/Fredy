@@ -1,0 +1,85 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <script>
+        $(document).ready(function () {
+            ejecutarTableMeritos();
+            function ejecutarTableMeritos(){
+                let datos = {
+                    clase: "Calificaciones",
+                    metodo: "obtenerPruebas",
+                    idConvocatoria: $('#id_convocatoria').val()
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "../modelo/interprete.php",
+                    data: datos,
+                    success: function (response) {
+                        let respuestas = JSON.parse(response);
+                        var titulo = "";
+                        respuestas.forEach(respuesta => {
+                            titulo +="<li><span>"+respuesta.titulo_merito+"</span>     <span>"+respuesta.porcentaje_merito+"</span>";
+                            /*
+                            if(respuesta.descripcion_merito != null){
+                                titulo +="respuesta.descripcion_merito";
+                            }*/
+                            let datosReglas = {
+                                clase: "Calificaciones",
+                                metodo: "obtenerReglas",
+                                idMerito: respuesta.id_merito
+                            };
+                            $.ajax({
+                                type: "POST",
+                                url: "../modelo/interprete.php",
+                                data: datosReglas,
+                                success: function (response2) {
+                                    let reglas = JSON.parse(response2);
+                                    let subtitulos = '';
+                                    console.log(reglas);
+                                    subtitulos +="<ol>";
+                                    reglas.forEach( regla => {
+                                        subtitulos+="<li>"+regla.titulo_regla+"</li>";
+                                    });
+                                    subtitulos +="</ol>";
+                                    titulo =titulo+subtitulos;
+                                    //console.log(subtitulos);
+                                }
+                            });
+                            titulo += "</li>";
+                            //console.log(titulo);
+                        });
+                        console.log(titulo);
+                        $('#ol_form').append(titulo);
+                    }
+                    //console.log(titulo);
+                });
+            }
+        });
+        /*                              let datosNormas = {
+                                            clase: "Calificaciones",
+                                            metodo: "obtenerNormas",
+                                            idRegla: merito.id_regla
+                                        };
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "../modelo/interprete.php",
+                                            data: datosNormas,
+                                            success: function (response3) {
+                                                let normas = JSON.parse(response3);
+                                                console.log(response3);
+                                                puntaje = '';
+                                                if(Object.entries(normas).length === 0){
+                                                    ``
+                                                }else{
+                                                    subtitulo = `<ol>`;
+                                                    normas.foreach(norma => {
+                                                        puntaje +=`
+                                                            <li><span>${norma.decripcion_norma}</span>    <span>${norma.puntos_norma}</span><li>
+                                                        ` 
+                                                    }
+                                                    puntaje += `</ol>`
+                                                }
+
+                                            }
+                            */
+    </script>

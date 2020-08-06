@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<rss version="2.0">
+    <channel>
+        <title>Informática - Sistemas</title>
+        <link>http://www.cs.umss.edu.bo</link>
+            <description>Avisos de los docentes y del departamento (INF-SIS)</description>
+            <copyright>Copyright 2008 CIDAI</copyright>
+            <language>es-bo</language>
+            <docs>http://cyber.law.harvard.edu/rss/rss.html</docs>
+            <lastBuildDate>Tue, 06 May 2008 11:00:00 +0000</lastBuildDate>
+            <webMaster>webmaster@cs.umss.edu.bo</webMaster>
+            <image>
+                    <url>http://www.cs.umss.edu.bo/imagenes/informatica_sistemas.jpg</url>
+                    <title>Página de las carreras de Informática-Sistemas</title>
+                    <link>http://www.cs.umss.edu.bo</link>
+            </image>
+            
+            
+    </channel>
+</rss>
