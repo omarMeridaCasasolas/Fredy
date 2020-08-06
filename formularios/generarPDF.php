@@ -14,5 +14,6 @@
     $pdf->loadHtml(utf8_decode(ob_get_clean()),'UTF-8');
     $pdf->render();
     $output = $pdf->output();
+    file_put_contents($rutaGuardado.$nombreArchivo, $output);
     //$pdf->stream('Ejemplo.pdf');
 ?>  
