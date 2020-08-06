@@ -355,7 +355,7 @@
             $sentenceSQL->execute();
         }
         public function guardarDireccionPDF($id,$direccionBaseDeDatos){
-            $sql= "UPDATE convocatoria set direcccion_pdf= :direccionBaseDeDatos WHERE id_convocatoria= :id";
+            $sql= "UPDATE convocatoria set direccion_pdf= :direccionBaseDeDatos WHERE id_convocatoria= :id";
             $sentenceSQL = $this->connexion_bd->prepare($sql);
             $resultado=$sentenceSQL->execute(array(":direccionBaseDeDatos"=>$direccionBaseDeDatos,":id"=>$id));
             $sentenceSQL->closeCursor();
